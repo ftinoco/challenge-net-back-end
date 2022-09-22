@@ -7,9 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+// injecting data context
 builder.Services.AddScoped<IDataContext, DataContext>();
+// setting up database connection
 builder.Services.SetDatabaseConfig(builder.Configuration);
 
+// adding swagger
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -20,5 +24,16 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(opt =>
+    {
+        opt.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+        opt.RoutePrefix = string.Empty;
+    });
+}
 
 app.Run();

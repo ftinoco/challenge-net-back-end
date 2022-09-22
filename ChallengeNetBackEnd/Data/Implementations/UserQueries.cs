@@ -1,5 +1,6 @@
 ﻿using ChallengeNetBackEnd.Data.Interfaces;
 using ChallengeNetBackEnd.Models;
+using ChallengeNetBackEnd.Models.DTOs;
 
 namespace ChallengeNetBackEnd.Data.Implementations
 {
@@ -12,9 +13,17 @@ namespace ChallengeNetBackEnd.Data.Implementations
             _context = context;
         }
 
-        public User? GetUserById(int id)
+        public UserDTO? GetUserById(int id)
         {
-           return _context.User.Find(id);
+            return _context.User.Where(x => x.Id == id)
+                       .Select(u => new UserDTO()
+                       {
+                           Id = u.Id,
+                           Fullname = $"{u.FirstName} {u.Surname}",
+                           AdvisorFullname = u.Advisor == null ? string.Empty :
+                                            $"{u.Advisor.FirstName} {u.Advisor.Surname}",
+                           CreationDate = u.Created
+                       }).FirstOrDefault();
         }
     }
 }

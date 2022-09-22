@@ -13,9 +13,7 @@ builder.Services.AddScoped<IUserQueries, UserQueries>();
 // setting up database connection
 builder.Services.SetDatabaseConfig(builder.Configuration);
 // adding swagger
-builder.Services.AddSwaggerGen();
-// adding automapper injection
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddSwaggerGen(); 
  
 var app = builder.Build();
 

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using ChallengeNetBackEnd.Data.Interfaces;
+﻿using ChallengeNetBackEnd.Data.Interfaces;
 using ChallengeNetBackEnd.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,22 +8,22 @@ namespace ChallengeNetBackEnd.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        public readonly IMapper _mapper;
         private readonly IUserQueries _queries;
 
-        public UsersController(
-            IUserQueries queries,
-            IMapper mapper)
+        public UsersController(IUserQueries queries)
         {
             _queries = queries;
-            _mapper = mapper;
         }
 
         [HttpGet("{id}")]
-        public UserDTO GetUserById(int id)
+        [ProducesResponseType(404, Type = typeof(string))]
+        [ProducesResponseType(200, Type = typeof(UserDTO))]
+        public IActionResult GetUserById(int id)
         {
-            var user = _queries.GetUserById(id);
-            return _mapper.Map<UserDTO>(user);
+            var dto = _queries.GetUserById(id);
+            if (dto == null)
+                return NotFound("User not found!");
+            return Ok(dto);
         }
     }
 }

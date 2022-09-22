@@ -1,9 +1,10 @@
 ﻿using ChallengeNetBackEnd.Models;
+using ChallengeNetBackEnd.Models.DTOs;
 
 namespace ChallengeNetBackEnd.Data.Interfaces
 {
     public interface IUserQueries
     {
-        User? GetUserById(int id);
+        UserDTO? GetUserById(int id);
     }
 }

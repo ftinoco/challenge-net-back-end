@@ -9,12 +9,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // injecting data context
 builder.Services.AddScoped<IDataContext, DataContext>();
+builder.Services.AddScoped<IUserQueries, UserQueries>();
 // setting up database connection
 builder.Services.SetDatabaseConfig(builder.Configuration);
-
 // adding swagger
 builder.Services.AddSwaggerGen();
-
+// adding automapper injection
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+ 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,8 +26,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
-
+ 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

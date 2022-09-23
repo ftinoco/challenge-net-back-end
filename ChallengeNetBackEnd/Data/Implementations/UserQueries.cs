@@ -1,5 +1,6 @@
 ﻿using ChallengeNetBackEnd.Data.Interfaces;
 using ChallengeNetBackEnd.Models.DTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChallengeNetBackEnd.Data.Implementations
 {
@@ -15,7 +16,7 @@ namespace ChallengeNetBackEnd.Data.Implementations
         public IEnumerable<GoalDTO> GetGoals(int userId)
         {
             return _context.User.Where(x => x.Id == userId)
-                            .SelectMany(y => y.Goals, 
+                            .SelectMany(y => y.Goals,
                             (user, goal) => new GoalDTO()
                             {
                                 CreationDate = goal.Created,
@@ -27,7 +28,7 @@ namespace ChallengeNetBackEnd.Data.Implementations
                                 Years = goal.Years,
                                 Portfolio = new PortfolioDTO()
                                 {
-                                    Title = goal.Portfolio.Title,   
+                                    Title = goal.Portfolio.Title,
                                     BPComission = goal.Portfolio.BPComission,
                                     Description = goal.Portfolio.Description,
                                     EstimatedProfitability = goal.Portfolio.EstimatedProfitability,
@@ -43,6 +44,43 @@ namespace ChallengeNetBackEnd.Data.Implementations
                                     Version = goal.Portfolio.Version
                                 }
                             }).ToList();
+        }
+
+        public SummaryDTO? GetSummary(int userId)
+        {
+            return GetSummary(userId, DateTime.Now);
+        }
+
+        public SummaryDTO? GetSummary(int userId, DateTime date)
+        {
+            var summary = from u in _context.User
+                          where u.Id == userId
+                          join gtf in _context.GoalTransactionFunding on
+                                u.Id equals gtf.Owner.Id
+                          join gt in _context.GoalTansaction on
+                                gtf.GoalTansaction.Id equals gt.Id
+                          join f in _context.Funding on
+                                gtf.Funding.Id equals f.Id
+                          join fsv in _context.FundingShareValue on
+                                f.Id equals fsv.Funding.Id
+                          join ci in _context.CurrencyIndicator on
+                                new { dest = u.CurrencyId, src = gt.CurrencyId, Date = date } equals
+                                new { dest = ci.DestinationCurrencyId, src = ci.SourceCurrencyId, ci.Date } into leftj
+                          from temp in leftj.DefaultIfEmpty()
+                          where fsv.Date <= date 
+                          select new
+                          { 
+                              UserId = u.Id,
+                              Balance = gtf.Quotas * fsv.Value * (temp == null ? 0 : temp.Value),
+                              Contributions = gt.Amount * (temp == null ? 0 : temp.Value)
+                          };
+
+            return summary.GroupBy(x => x.UserId)
+                .Select(x => new SummaryDTO
+                {
+                    Balance = x.Sum(x => x.Balance),
+                    Contributions = x.Sum(x => x.Contributions)
+                }).FirstOrDefault(); 
         }
 
         public UserDTO? GetUserById(int id)

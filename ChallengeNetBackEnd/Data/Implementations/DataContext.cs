@@ -10,5 +10,7 @@ namespace ChallengeNetBackEnd.Data.Implementations
             : base(options) { }
 
         public DbSet<User> User { get; set; }
+        public DbSet<Portfolio> Portfolio { get; set; }
+        public DbSet<Goal> Goal { get; set; }
     }
 }

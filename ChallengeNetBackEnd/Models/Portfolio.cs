@@ -16,8 +16,6 @@ namespace ChallengeNetBackEnd.Models
         public string Title { get; set; }
         [Column("description")]
         public string Description { get; set; }
-        [Column("risklevelid")]
-        public int RiskLevelId { get; set; }
         [Column("isdefault")]
         public bool IsDefault { get; set; }
         [Column("profitability")]
@@ -34,5 +32,9 @@ namespace ChallengeNetBackEnd.Models
         public double BPComission { get; set; }
 
 
+        [ForeignKey("financialentityid")]
+        public virtual FinancialEntity FinancialEntity { get; set; }
+        [ForeignKey("risklevelid")]
+        public virtual RiskLevel RiskLevel { get; set; }
     }
 }

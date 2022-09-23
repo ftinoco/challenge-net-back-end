@@ -19,7 +19,7 @@ namespace ChallengeNetBackEnd.Data.Implementations
                             (user, goal) => new GoalDTO()
                             {
                                 CreationDate = goal.Created,
-                                FinancialEntity = "",
+                                FinancialEntity = goal.FinancialEntity == null ? string.Empty : goal.FinancialEntity.Title,
                                 InitialInvestment = goal.InitialInvestment,
                                 MonthlyContribution = goal.MonthlyContribution,
                                 TargetAmount = goal.TargetAmount,
@@ -37,7 +37,8 @@ namespace ChallengeNetBackEnd.Data.Implementations
                                     MaxRangeYear = goal.Portfolio.MaxRangeYear,
                                     MinRangeYear = goal.Portfolio.MinRangeYear,
                                     Profitability = goal.Portfolio.Profitability,
-                                    RiskLevelId = goal.Portfolio.RiskLevelId,
+                                    FinancialEntity = goal.Portfolio.FinancialEntity.Title,
+                                    RiskLevel = goal.Portfolio.RiskLevel.Title,
                                     Uuid = goal.Portfolio.Uuid,
                                     Version = goal.Portfolio.Version
                                 }

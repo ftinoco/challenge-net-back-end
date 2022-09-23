@@ -28,5 +28,7 @@ namespace ChallengeNetBackEnd.Models
         public virtual User User { get; set; }
         [ForeignKey("portfolioid")]
         public virtual Portfolio Portfolio { get; set; }
+        [ForeignKey("financialentityid")]
+        public virtual FinancialEntity? FinancialEntity { get; set; }
     }
 }

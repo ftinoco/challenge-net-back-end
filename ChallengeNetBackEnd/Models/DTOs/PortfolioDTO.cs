@@ -9,7 +9,8 @@ namespace ChallengeNetBackEnd.Models.DTOs
         public string Uuid { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public int RiskLevelId { get; set; }
+        public string FinancialEntity { get; set; }
+        public string RiskLevel { get; set; }
         public bool IsDefault { get; set; }
         public JsonDocument? Profitability { get; set; }
         public int? InvestmentStrategyId { get; set; }

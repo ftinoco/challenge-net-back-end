@@ -9,5 +9,7 @@ namespace ChallengeNetBackEnd.Models
         public double Value { get; set; }
         [Column("date")]
         public DateTime Date { get; set; }
+        [ForeignKey("fundingid")]
+        public virtual Funding Funding { get; set; }
     }
 }

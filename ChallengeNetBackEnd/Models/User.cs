@@ -3,23 +3,17 @@
 namespace ChallengeNetBackEnd.Models
 {
     [Table("user", Schema = "public")]
-    public class User
+    public class User : EntityBase
     {
-
-        [Column("id")]
-        public int Id { get; set; }
         [Column("firstname")]
         public string FirstName { get; set; }
         [Column("surname")]
         public string Surname { get; set; }
-        [Column("created")]
-        public DateTime Created { get; set; }
-        [Column("modified")]
-        public DateTime Modified { get; set; }
         [Column("currencyid")]
         public int CurrencyId { get; set; }
 
         [ForeignKey("advisorid")]
-        public virtual User? Advisor { get; set; }
+        public virtual User? Advisor { get; set; } 
+        public virtual IEnumerable<Goal> Goals { get; set; }
     }
 }

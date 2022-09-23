@@ -6,5 +6,6 @@ namespace ChallengeNetBackEnd.Data.Interfaces
     public interface IUserQueries
     {
         UserDTO? GetUserById(int id);
+        IEnumerable<GoalDTO> GetGoals(int userId);
     }
 }

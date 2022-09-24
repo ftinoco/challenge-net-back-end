@@ -62,3 +62,13 @@ Esto con el fin de facilitar la inyección de dependencia.
  
 
 ## Como ejecutarlo
+
+El proyecto está desarrollado en VS 2022 con NET6, por lo que es necesario tener esta versión instalada para poder ejecutar en proyecto de manera local.
+
+Solamente se requiere descargar el código fuente del repositorio con el siguiente comando de git:
+``` 
+git clone https://github.com/ftinoco/challenge-net-back-end.git 
+``` 
+una vez descargado, proceder a abrir el proyecto en VS y compilarlo con el fin de descargar e instalar los paquetes necesario para que el API se ejecute. 
+Posterior a esto, se ejecuta el proyecto el cual está configurado para correr con Kastrel, en la ruta  y la cual mostrará en el navegador la siguiente pantalla:
+

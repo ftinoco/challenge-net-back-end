@@ -70,5 +70,10 @@ Solamente se requiere descargar el código fuente del repositorio con el siguien
 git clone https://github.com/ftinoco/challenge-net-back-end.git 
 ``` 
 una vez descargado, proceder a abrir el proyecto en VS y compilarlo con el fin de descargar e instalar los paquetes necesario para que el API se ejecute. 
-Posterior a esto, se ejecuta el proyecto el cual está configurado para correr con Kastrel, en la ruta  y la cual mostrará en el navegador la siguiente pantalla:
+
+Posterior a esto, se ejecuta el proyecto el cual está configurado para correr con Kastrel, en la ruta https://localhost:7187 y la cual mostrará en el navegador la siguiente pantalla:
+
+![](./doc/swagger.jpg)
+
+El proyecto cuenta con dos controladores, <i>Default</i> solamente presta la funcionalidad de probar las conexiones y <i>Users</i> es el controlador con las funcionalidades requeridas por el challenge.
 

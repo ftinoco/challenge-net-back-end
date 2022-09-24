@@ -48,5 +48,17 @@ Los endpoints necesarios son:
 </ol>  
  
 ## Estructura del proyecto
+El proyecto está estructurado de la siguiente manera: 
+
+![](./doc/project-structure.png)
+
+Consta de las siguientes carpetas:
+
+- Controllers:  En esta carpeta están los controladores que sirven los endpoints al usuario
+- Data: Acá se realiza la interacción la base de datos, internamente tenemos las carpetas <i>Interfaces</i> y <i>Implementations</i>, en la primera tenemos la firma de los metodos a implemetar tanto para DataContext como para UserQueries. 
+Esto con el fin de facilitar la inyección de dependencia.
+- Models: Se definen las entidades que reprensentan las tablas de la base de datos en el proyecto. Adicionalmente, está la carpeta <i>DTOs</i> donde se encuentran las clases que con la estructura de los datos requeridos en los endpoints.
+- Utils: Carpeta de utilitarios
+ 
 
 ## Como ejecturlo

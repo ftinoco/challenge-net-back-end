@@ -13,9 +13,10 @@ builder.Services.AddScoped<IUserQueries, UserQueries>();
 // setting up database connection
 builder.Services.SetDatabaseConfig(builder.Configuration);
 // adding swagger
-builder.Services.AddSwaggerGen(); 
- 
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
+// enabling legacy timestamp behavior, as the date type was throwing an error
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 // Configure the HTTP request pipeline.

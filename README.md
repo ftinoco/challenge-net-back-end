@@ -82,7 +82,7 @@ El proyecto cuenta con dos controladores, <i>Default</i> que tiene como fin perm
 Como parte del challenge, es necesario que la aplicación esté accesible desde internet, por lo que fue publicado en Azure, 
 y se puede acceder a través de la siguiente URL: [challengenetbackend.azurewebsites.net](https://challengenetbackend.azurewebsites.net/)
 
-Para verificar si el servicio está ejecutando se puede probar el endpoint [ping](https://challengenetbackend.azurewebsites.net/ping) el cual debería retornar como mensaje <b><i>connected!</i></b>. Para verificar si hay conexión a la base de datos
-se puede realizar a través de [canCannect](https://challengenetbackend.azurewebsites.net/canConnect) el cual debería responder con <b><i>connected!</i></b>.
+Para verificar si el servicio está ejecutando se puede probar el endpoint [ping](https://challengenetbackend.azurewebsites.net/ping) el cual debería retornar como mensaje <b><i>pong</i></b>. Para verificar si hay conexión a la base de datos
+se puede realizar a través de [canConnect](https://challengenetbackend.azurewebsites.net/canConnect) el cual debería responder con <b><i>connected!</i></b>.
 
  

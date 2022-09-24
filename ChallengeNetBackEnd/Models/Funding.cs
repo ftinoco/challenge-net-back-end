@@ -26,7 +26,7 @@ namespace ChallengeNetBackEnd.Models
 
         [ForeignKey("financialentityid")]
         public virtual FinancialEntity FinancialEntity { get; set; }
-        public virtual IEnumerable<FundingShareValue> FundingShareValue { get; set; }
+        public virtual ICollection<FundingShareValue> FundingShareValue { get; set; }
 
     }
 }

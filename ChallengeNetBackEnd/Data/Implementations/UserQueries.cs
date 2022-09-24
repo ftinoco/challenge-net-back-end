@@ -1,6 +1,5 @@
 ﻿using ChallengeNetBackEnd.Data.Interfaces;
 using ChallengeNetBackEnd.Models.DTOs;
-using Microsoft.EntityFrameworkCore;
 
 namespace ChallengeNetBackEnd.Data.Implementations
 {
@@ -89,6 +88,9 @@ namespace ChallengeNetBackEnd.Data.Implementations
 
         public SummaryDTO? GetSummary(int userId, DateTime date)
         {
+            // Se optó por hacer el query con linq para mantener el código
+            // sin sentencias sql embebidas y se evitó lambda para tratar
+            // de hacerlo mas entendible
             var summary = from u in _context.User
                           where u.Id == userId
                           join gtf in _context.GoalTransactionFunding on
@@ -103,7 +105,8 @@ namespace ChallengeNetBackEnd.Data.Implementations
                                 new { dest = u.CurrencyId, src = gt.CurrencyId, Date = date } equals
                                 new { dest = ci.DestinationCurrencyId, src = ci.SourceCurrencyId, ci.Date } into leftj
                           from temp in leftj.DefaultIfEmpty()
-                          where fsv.Date <= date  // TODO: En este punto se entendió que era hasta la fecha proporcionada o a la actual
+                          // TODO: En este punto se entendió que era hasta la fecha proporcionada
+                          where fsv.Date <= date  
                           select new
                           { 
                               UserId = u.Id,

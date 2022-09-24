@@ -14,8 +14,8 @@ namespace ChallengeNetBackEnd.Models
 
         [ForeignKey("advisorid")]
         public virtual User? Advisor { get; set; } 
-        public virtual IEnumerable<Goal> Goals { get; set; }
-        public virtual IEnumerable<GoalTansaction> GoalTansactions { get; set; }
-        public virtual IEnumerable<GoalTransactionFunding> GoalTransactionsFunding { get; set; }
+        public virtual ICollection<Goal> Goals { get; set; }
+        public virtual ICollection<GoalTansaction> GoalTansactions { get; set; }
+        public virtual ICollection<GoalTransactionFunding> GoalTransactionsFunding { get; set; }
     }
 }

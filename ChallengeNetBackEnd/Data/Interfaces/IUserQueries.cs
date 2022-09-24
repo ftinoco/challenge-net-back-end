@@ -7,5 +7,6 @@ namespace ChallengeNetBackEnd.Data.Interfaces
     {
         UserDTO? GetUserById(int id);
         IEnumerable<GoalDTO> GetGoals(int userId);
+        GoalDetailDTO? GetGoalDetail(int userId, int goalId);
     }
 }

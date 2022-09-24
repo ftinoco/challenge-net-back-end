@@ -28,7 +28,7 @@ namespace ChallengeNetBackEnd.Data.Implementations
                                 GoalCategory = goal.GoalCategory.Title,
                                 TargetAmountPercentage = ((goal.GoalTransactions.Sum(y => y.Amount)) * 100) / goal.TargetAmount,
                                 Contributions = goal.GoalTransactions.Sum(y => y.Amount),
-                                Withdrawal = 0,
+                                Withdrawal = 0, // TODO: No fue posible identificar la fuente de retiros
                                 Portfolio = new PortfolioDTO()
                                 {
                                     Title = goal.Portfolio.Title,
@@ -103,7 +103,7 @@ namespace ChallengeNetBackEnd.Data.Implementations
                                 new { dest = u.CurrencyId, src = gt.CurrencyId, Date = date } equals
                                 new { dest = ci.DestinationCurrencyId, src = ci.SourceCurrencyId, ci.Date } into leftj
                           from temp in leftj.DefaultIfEmpty()
-                          where fsv.Date <= date 
+                          where fsv.Date <= date  // TODO: En este punto se entendió que era hasta la fecha proporcionada o a la actual
                           select new
                           { 
                               UserId = u.Id,

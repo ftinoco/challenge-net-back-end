@@ -29,7 +29,7 @@ namespace ChallengeNetBackEnd.Controllers
 
         /// <summary>
         /// Obtiene el resumen del usuario.
-        /// OJO: Probablemente el resultado sea 0 en balance y aportes
+        /// Nota: Probablemente el resultado sea 0 en balance y aportes
         /// hasta que no se actualice la tabla de CurrencyIndicator
         /// con la tasas de conversion a la fecha actual
         /// </summary>

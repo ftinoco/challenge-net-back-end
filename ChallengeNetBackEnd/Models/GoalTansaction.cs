@@ -3,7 +3,11 @@
 namespace ChallengeNetBackEnd.Models
 {
     [Table("goaltransaction", Schema = "public")]
+<<<<<<< HEAD
     public class GoalTansaction: EntityBase
+=======
+    public class GoalTansaction : EntityBase
+>>>>>>> feat/get-goal-detail
     {
         [Column("type")]
         public string Type { get; set; }

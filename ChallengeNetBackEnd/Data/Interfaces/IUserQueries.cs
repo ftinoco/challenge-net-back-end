@@ -9,5 +9,6 @@ namespace ChallengeNetBackEnd.Data.Interfaces
         SummaryDTO? GetSummary(int userId);
         SummaryDTO? GetSummary(int userId, DateTime date);
         IEnumerable<GoalDTO> GetGoals(int userId);
+        GoalDetailDTO? GetGoalDetail(int userId, int goalId);
     }
 }

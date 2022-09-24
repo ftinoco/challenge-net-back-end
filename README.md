@@ -85,4 +85,9 @@ y se puede acceder a través de la siguiente URL: [challengenetbackend.azurewebs
 Para verificar si el servicio está ejecutando se puede probar el endpoint [ping](https://challengenetbackend.azurewebsites.net/ping) el cual debería retornar como mensaje <b><i>pong</i></b>. Para verificar si hay conexión a la base de datos
 se puede realizar a través de [canConnect](https://challengenetbackend.azurewebsites.net/canConnect) el cual debería responder con <b><i>connected!</i></b>.
 
- 
+## Notas del Release
+
+- Para el segundo punto de requerimiento, se esta utilizando la fecha actual para obtener la tasa de conversión por lo que es probable que se obtenga 0 como valor para balance y aporte, sino hay valores para la fecha actual en la tabla CurrencyIndicator.
+- Para el tercer punto se está reutilizando la funcionalidad del segundo punto, por lo que si no existe tasa de conversión para la fecha proporcionada los valores serán 0 para balance y aporte.
+- Para el quinto punto no se logró identificar los campos para obtener el total de retiro, por lo que el valor siempre será 0.
+- A nivel general, se trató de utilizar solo Linq, evitando SQL raw en el código, por lo que podría parecer complejas las consultas pero se procuró dejarlo de la manera más entendible.  

@@ -36,5 +36,16 @@ namespace ChallengeNetBackEnd.Controllers
                 return NotFound("User not found!");
             return Ok(dto);
         }
+
+        [HttpGet("{id}/goals/{goalId}")]
+        [ProducesResponseType(404, Type = typeof(string))]
+        [ProducesResponseType(200, Type = typeof(GoalDetailDTO))]
+        public IActionResult GetGoalDetail(int id, int goalId)
+        {
+            var dto = _queries.GetGoalDetail(id,  goalId);
+            if (dto == null)
+                return NotFound("No information to show!");
+            return Ok(dto);
+        }
     }
 }

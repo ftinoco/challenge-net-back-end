@@ -47,3 +47,6 @@ Los endpoints necesarios son:
   </li>
 </ol>  
  
+## Estructura del proyecto
+
+## Como ejecturlo

@@ -14,9 +14,7 @@ namespace ChallengeNetBackEnd.Models
         [Column("monthlycontribution")]
         public int MonthlyContribution { get; set; }
         [Column("targetamount")]
-        public int TargetAmount { get; set; }
-        [Column("goalcategoryid")]
-        public int GoalCategoryId { get; set; }
+        public int TargetAmount { get; set; } 
         [Column("risklevelid")]
         public int RiskLevelId { get; set; }
         [Column("currencyid")]
@@ -32,5 +30,6 @@ namespace ChallengeNetBackEnd.Models
         public virtual GoalCategory GoalCategory { get; set; }
         [ForeignKey("financialentityid")]
         public virtual FinancialEntity? FinancialEntity { get; set; }
+        public virtual ICollection<GoalTansaction> GoalTransactions { get; set; }
     }
 }

@@ -54,11 +54,11 @@ El proyecto está estructurado de la siguiente manera:
 
 Consta de las siguientes carpetas:
 
-- <b>Controllers:</b>  En esta carpeta están los controladores que sirven los endpoints al usuario
+- <b>Controllers:</b>  En esta carpeta están los controladores que sirven los endpoints al usuario.
 - <b>Data:</b> Acá se realiza la interacción la base de datos, internamente tenemos las carpetas <i>Interfaces</i> y <i>Implementations</i>, en la primera tenemos la firma de los metodos a implemetar tanto para DataContext como para UserQueries. 
 Esto con el fin de facilitar la inyección de dependencia.
 - <b>Models:</b> Se definen las entidades que reprensentan las tablas de la base de datos en el proyecto. Adicionalmente, está la carpeta <i>DTOs</i> donde se encuentran las clases que con la estructura de los datos requeridos en los endpoints.
-- <b>Utils:</b> Carpeta de utilitarios
+- <b>Utils:</b> Carpeta de utilitarios.
  
 
 ## Como ejecutarlo
@@ -71,7 +71,7 @@ git clone https://github.com/ftinoco/challenge-net-back-end.git
 ``` 
 una vez descargado, proceder a abrir el proyecto en VS y compilarlo con el fin de descargar e instalar los paquetes necesario para que la aplicación se ejecute. 
 
-Posterior a esto, se ejecuta el proyecto el cual está configurado para correr con Kastrel, en la ruta https://localhost:7187 y la cual mostrará en el navegador la siguiente pantalla:
+Posterior a esto, se ejecuta el proyecto el cual está configurado para correr con Kastrel por defecto, en la ruta https://localhost:7187 y la cual mostrará en el navegador la siguiente pantalla:
 
 ![](./doc/swagger.jpg)
 

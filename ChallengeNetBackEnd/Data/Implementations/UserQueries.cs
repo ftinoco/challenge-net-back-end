@@ -26,8 +26,8 @@ namespace ChallengeNetBackEnd.Data.Implementations
                                 Years = goal.Years,
                                 GoalCategory = goal.GoalCategory.Title,
                                 TargetAmountPercentage = ((goal.GoalTransactions.Sum(y => y.Amount)) * 100) / goal.TargetAmount,
-                                Contributions = goal.GoalTransactions.Sum(y => y.Amount),
-                                Withdrawal = 0, // TODO: No fue posible identificar la fuente de retiros
+                                Contributions = goal.GoalTransactions.Where(x => x.Type == "buy").Sum(y => y.Amount),
+                                Withdrawal = goal.GoalTransactions.Where(x => x.Type == "sale").Sum(y => y.Amount),
                                 Portfolio = new PortfolioDTO()
                                 {
                                     Title = goal.Portfolio.Title,

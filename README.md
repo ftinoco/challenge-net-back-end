@@ -1,5 +1,5 @@
 # Challenge NET Back-end
-Proyecto desarrollado para proceso de reclutamiento en Betterplan. 
+Proyecto desarrollado para proceso de reclutamiento. 
 
 ## Descripción de la funcionalidad principal del proyecto
 
